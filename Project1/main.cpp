@@ -26,21 +26,19 @@ int main(int argc, char** argv) {
 	//getline(ifs, tmp);
 	//cout << tmp << endl;
 
-	map<char, int> frequencies;
-	char jared[1];
-	while (ifs.read(jared, 1)) {
-		char parker = jared[0];
-		//int count = frequencies[parker];
-		//count++;
-		//frequencies[parker] = count;
-		frequencies[parker]++;
+	map<char, int> frequencies;    // Creating a map that key is char and value is int
+	char key[1];				   // Create a char array that accepts only one char
+	while (ifs.read(key, 1)) {     // Read one char from the file and save it into key
+		char value = key[0];       
+		frequencies[value]++;     // Add the key into the map and +1 into its value
 	}
 	ifs.close();
+
+
 	//cout << "number of t's: " << frequencies['t'] << endl;
 	for (auto c : frequencies) {
+
+		// print the key and its value out
 		cout << "Key: " << c.first << ", value: " << c.second << endl;
 	}
-
-	cout << "this is test" << endl;
-	cout << "thie is the second line" << endl;
 }
