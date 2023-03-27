@@ -22,23 +22,26 @@ int main(int argc, char** argv) {
 		exit(0);
 	}
 
-	//string tmp;
-	//getline(ifs, tmp);
-	//cout << tmp << endl;
-
 	map<char, int> frequencies;    // Creating a map that key is char and value is int
+	map<char, int> ascii_value;      
+
+
 	char key[1];				   // Create a char array that accepts only one char
 	while (ifs.read(key, 1)) {     // Read one char from the file and save it into key
 		char value = key[0];       
-		frequencies[value]++;     // Add the key into the map and +1 into its value
+		frequencies[value]++;      // Add the key into the map and +1 into its value
+
+		if (ascii_value[value] == 0) {
+			ascii_value[value] = (int)value;
+		}
+		
+
 	}
 	ifs.close();
 
-
 	//cout << "number of t's: " << frequencies['t'] << endl;
 	for (auto c : frequencies) {
-
 		// print the key and its value out
-		cout << "Key: " << c.first << ", value: " << c.second << endl;
+		cout << "Key: " << c.first << ", value: " << c.second << "ascii value: " << ascii_value[c.first] << endl;
 	}
 }
